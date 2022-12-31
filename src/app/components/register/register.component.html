@@ -1,0 +1,55 @@
+<div class="container  col-xxl-8 px-4 py-5">
+  <div class="col-md-10 mx-auto col-lg-5">
+    <form class="p-4 p-md-5 border rounded-3 bg-light" (ngSubmit)="register()">
+      <div *ngIf="error" class="alert alert-danger d-flex align-items-center" role="alert">
+        <div [innerHTML]="error"></div>
+      </div>
+      <div class="form-floating mb-3">
+        <input [(ngModel)]="model.UserName" name="UserName" type="text" class="form-control" id="UserName"
+               placeholder="User name">
+        <label for="UserName">User Name</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input [(ngModel)]="model.KnownAs" name="KnownAs" type="text" class="form-control" id="KnownAs"
+               placeholder="User name">
+        <label for="KnownAs">NickName</label>
+      </div>
+      <div class="form-floating mb-3">
+        <select class="form-select" id="favourite" [(ngModel)]="model.Gender" name="Gender" aria-label="Default select example">
+          <option *ngFor="let gender of genders">{{gender}}</option>
+        </select>
+        <label for="favourite">Select your gender</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input [(ngModel)]="model.City" name="City" type="text" class="form-control" id="City" placeholder="User name">
+        <label for="City">City</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input [(ngModel)]="model.Country" name="Country" type="text" class="form-control" id="Country"
+               placeholder="User name">
+        <label for="Country">Country</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input [(ngModel)]="model.Password" name="Password" type="password" class="form-control" id="floatingPassword"
+               placeholder="Password">
+        <label for="floatingPassword">Password</label>
+      </div>
+      <div class="form-floating input-group mb-4">
+        <input type="text"
+               [(ngModel)]="model.DateOfBirth"
+               name="DateOfBirth"
+               placeholder="Date of Birth"
+               class="form-control"
+               id="dateOfBirth"
+               [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD', containerClass: 'theme-blue' }"
+               bsDatepicker>
+        <label for="dateOfBirth">Date of Birth</label>
+      </div>
+      <button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
+      <hr class="my-4">
+      <small class="text-muted">
+        <button (click)="cancel()" class="btn btn-lg btn-outline-info">Go back</button>
+      </small>
+    </form>
+  </div>
+</div>
