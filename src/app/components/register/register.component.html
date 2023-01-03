@@ -1,6 +1,7 @@
 <div class="container  col-xxl-8 px-4 py-5">
   <div class="col-md-10 mx-auto col-lg-5">
     <form class="p-4 p-md-5 border rounded-3 bg-light" (ngSubmit)="register()">
+      <h4 class="align-content-center">Sign Up</h4>
       <div *ngIf="error" class="alert alert-danger d-flex align-items-center" role="alert">
         <div [innerHTML]="error"></div>
       </div>

@@ -1,7 +1,7 @@
 <header class="p-3 mb-3 border-bottom">
   <div class="container">
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-      <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+      <a routerLink="/" routerLinkActive="active" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
         Dating App
         <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
           <use xlink:href="#bootstrap"></use>
@@ -9,10 +9,9 @@
       </a>
 
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" *ngIf="currentUser$ | async">
-        <li><a href="#" class="nav-link px-2 link-secondary">Overview</a></li>
-        <li><a href="#" class="nav-link px-2 link-dark">Inventory</a></li>
-        <li><a href="#" class="nav-link px-2 link-dark">Customers</a></li>
-        <li><a href="#" class="nav-link px-2 link-dark">Products</a></li>
+        <li><a routerLink="/members" routerLinkActive="active" class="nav-link px-2 link-secondary">Matches</a></li>
+        <li><a routerLink="/lists" routerLinkActive="active" class="nav-link px-2 link-dark">Lists</a></li>
+        <li><a routerLink="/messages" routerLinkActive="active" class="nav-link px-2 link-dark">Messages</a></li>
       </ul>
 
       <form #loginForm="ngForm" class="d-flex mb-3 mb-lg-0 me-lg-3" (ngSubmit)="login()" autocomplete="off" *ngIf="!(currentUser$ | async)">
@@ -30,7 +29,7 @@
         <ul class="dropdown-menu text-small" style="">
           <li><a class="dropdown-item" href="#">New project...</a></li>
           <li><a class="dropdown-item" href="#">Settings</a></li>
-          <li><a class="dropdown-item" href="#">Profile</a></li>
+          <li><a class="dropdown-item" routerLink="/member/edit">Profile</a></li>
           <li>
             <hr class="dropdown-divider">
           </li>
