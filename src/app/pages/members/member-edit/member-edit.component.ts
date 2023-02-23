@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, HostListener, OnInit, ViewChild} from '@angular/core';
 import {IMember} from "../../../_models/member";
 import {ISessionUser} from "../../../_models/SessionUser.interface";
 import {AccountService} from "../../../_services/account.service";
@@ -15,6 +15,11 @@ import {NgForm} from "@angular/forms";
 })
 export class MemberEditComponent implements OnInit {
   @ViewChild('editForm') editForm: NgForm | undefined;
+  @HostListener("window:beforeunload", ["$event"]) unloadNotification($event:any) {
+    if (this.editForm.dirty) {
+      $event.returnValue = true
+    }
+  }
   memberData: IMember;
   sessionUser: ISessionUser
 
@@ -40,7 +45,12 @@ export class MemberEditComponent implements OnInit {
   }
 
   updateMember() {
-    this.toast.success("Changes has been saved!", "Great!")
+    this.memberService.updateMember(this.editForm?.value)
+      .subscribe({
+        next: () => this.toast.success("Changes has been saved!", "Great!"),
+        error: (err) => this.toast.error(ParseExpectedErrorResponse(err))
+      })
+
     this.editForm.reset(this.memberData);
   }
 }
